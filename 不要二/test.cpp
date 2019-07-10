@@ -8,7 +8,9 @@ int main()
 	vector<vector<int>> a;
 	a.resize(w);
 	for(auto& e : a)
+	{
 		e.resize(h, 1);
+	}
 	for(int i=0;i<w;i++)
 	{
 		for(int j=0;j<h;j++)
@@ -18,9 +20,13 @@ int main()
 				res++;
 				// 标记不能放蛋糕的位置
 				if((i+2)<w)
+				{
 					a[i+2][j] = 0;
+				}
 				if((j+2)<h)
+				{
 					a[i][j+2] = 0;
+				}
 			}
 		}
 	} 
