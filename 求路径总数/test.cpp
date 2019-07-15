@@ -1,5 +1,7 @@
 #include<iostream>
+
 using namespace std;
+
 int pathNum(int n,int m)
 {
 	if(n > 1 && m > 1)
