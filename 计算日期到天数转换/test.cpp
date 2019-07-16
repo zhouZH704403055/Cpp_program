@@ -1,5 +1,7 @@
 #include <iostream>
+
 using namespace std;
+
 int main()
 { 
 	int array[12] = {31,59, 90, 120, 151, 181, 212,243, 273, 304, 334, 365};
@@ -19,6 +21,7 @@ int main()
 			sum += 1;
 		} 
 	} 
+	
 	cout << sum <<endl;
 	} 
 }
