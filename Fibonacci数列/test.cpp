@@ -1,5 +1,7 @@
 #include <iostream>
+
 using namespace std;
+
 int main(){
 	int N, f, l = 0,r = 0,f0 = 0,f1 = 1;
 	cin >> N;
