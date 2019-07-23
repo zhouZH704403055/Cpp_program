@@ -44,6 +44,7 @@ public:
             return (double)min_heap[0];
         }
     }
+	
 private:
     vector<int> max_heap;
     vector<int> min_heap;
