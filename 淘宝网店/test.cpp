@@ -4,14 +4,12 @@
 //闰年判断函数
 inline int leap_year(int year)
 {
-return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
-} /
-/足年天数
+	return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
+} 
+//足年天数
 inline int profit_of_year(int year)
 {
-return 2 * 31
-+ 1 * 28
-+ 1 * 31
+	return 2 * 31+ 1 * 28+ 1 * 31
 + 2 * 30
 + 1 * 31
 + 2 * 30
