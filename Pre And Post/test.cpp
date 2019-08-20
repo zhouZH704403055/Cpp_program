@@ -9,8 +9,8 @@ long long r = 1;
 for (int i = 1; i <= n; i++)
 {
 r *= i;
-} r
-eturn r;
+} 
+return r;
 } /
 / 求 n, m 的组合 C(n, m)
 // 利用 C(n, m) == C(n, n - m) 的特点，计算容易的
