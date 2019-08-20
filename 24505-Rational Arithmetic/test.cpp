@@ -2,7 +2,8 @@
 #include <cmath>
 //long long是两个关键字拼起来的，用起来很不方便，重命名一下
 typedef long long _sint64;
-//有理数类的声明class RationalNumber{
+//有理数类的声明
+class RationalNumber{
 bool m_infinate; //处理除数为零
 bool m_negative; //处理负数
 _sint64 m_numerator; //分子，方便输出
