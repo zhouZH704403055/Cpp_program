@@ -1,6 +1,7 @@
 class Solution {
 public:
-    int FirstNotRepeatingChar(string str) {
+    int FirstNotRepeatingChar(string str) 
+	{
         unordered_map<char,int> map;
         for(auto e:str)
         {
