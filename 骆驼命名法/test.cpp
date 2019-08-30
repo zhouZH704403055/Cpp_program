@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <memory>
 #include <sstream>
+
 #define INF 1000000
 
 using namespace std;
