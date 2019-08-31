@@ -3,11 +3,12 @@
 //long long是两个关键字拼起来的，用起来很不方便，重命名一下
 typedef long long _sint64;
 //有理数类的声明
-class RationalNumber{
-bool m_infinate; //处理除数为零
-bool m_negative; //处理负数
-_sint64 m_numerator; //分子，方便输出
-_sint64 m_denominator; //分母
+class RationalNumber
+{
+	bool m_infinate; //处理除数为零
+	bool m_negative; //处理负数
+	_sint64 m_numerator; //分子，方便输出
+	_sint64 m_denominator; //分母
 _sint64 m_integer; //整数部分
 _sint64 m_numeratorAll; //记录无整数分数的分子，方便进行运算
 _sint64 calcGCD(_sint64 a, _sint64 b); //求最大公约数的函数
