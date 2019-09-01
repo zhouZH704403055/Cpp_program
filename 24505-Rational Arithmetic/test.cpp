@@ -9,65 +9,66 @@ class RationalNumber
 	bool m_negative; //处理负数
 	_sint64 m_numerator; //分子，方便输出
 	_sint64 m_denominator; //分母
-_sint64 m_integer; //整数部分
-_sint64 m_numeratorAll; //记录无整数分数的分子，方便进行运算
-_sint64 calcGCD(_sint64 a, _sint64 b); //求最大公约数的函数
+	_sint64 m_integer; //整数部分
+	_sint64 m_numeratorAll; //记录无整数分数的分子，方便进行运算
+	_sint64 calcGCD(_sint64 a, _sint64 b); //求最大公约数的函数
 public:
-RationalNumber(_sint64 numerator, _sint64 denominator); //构造函数
-RationalNumber operator+(RationalNumber const& o) const; //四则运算重载
-RationalNumber operator-(RationalNumber const& o) const;
-RationalNumber operator*(RationalNumber const& o) const;
-RationalNumber operator/(RationalNumber const& o) const;
-//输出流运算符重载
-friend std::ostream &operator<<(std::ostream &os, RationalNumber const& o);
+	RationalNumber(_sint64 numerator, _sint64 denominator); //构造函数
+	RationalNumber operator+(RationalNumber const& o) const; //四则运算重载
+	RationalNumber operator-(RationalNumber const& o) const;
+	RationalNumber operator*(RationalNumber const& o) const;
+	RationalNumber operator/(RationalNumber const& o) const;
+	//输出流运算符重载
+	friend std::ostream &operator<<(std::ostream &os, RationalNumber const& o);
 };
+
 //有理数类每个方法的实现
 _sint64 RationalNumber::calcGCD(_sint64 a, _sint64 b)
 {
-if (b == 0)
+	if (b == 0)
+	{
+		return a;
+	} 
+	//辗转相除法
+	return calcGCD(b, a % b);
+} 
+RationalNumber::RationalNumber(_sint64 numerator, _sint64 denominator)
 {
-return a;
-} /
-/辗转相除法
-return calcGCD(b, a % b);
-} R
-ationalNumber::RationalNumber(_sint64 numerator, _sint64 denominator)
-{
-m_negative = false;
-m_infinate = false;
-//处理分母为零的情况
-if (denominator == 0)
-{
-m_infinate = true;
-return;
-} /
-/这里这样写，是因为在通过计算结果进行构造过程中，有可能出现分子分母均为负的情况。
-if (numerator < 0)
-{
-m_negative = !m_negative;
-} i
-f (denominator < 0)
-{
-m_negative = !m_negative;
-} /
-/计算整数、分子、分母。其中分母要参与下面的运算，所以不能是负的，用abs取绝对值，分子要保留
-原值
-m_integer = numerator / denominator;m_numerator = numerator - m_integer * denominator;
-m_denominator = abs(denominator);
-//约分，注意传给子函数的分子必须是正的，分母上面处理过了
-if (m_numerator)
-{
-_sint64 maxtmp = calcGCD(abs(m_numerator), m_denominator);
-if (maxtmp)
-{
-m_numerator /= maxtmp;
-m_denominator /= maxtmp;
+	m_negative = false;
+	m_infinate = false;
+	//处理分母为零的情况
+	if (denominator == 0)
+	{
+		m_infinate = true;
+		return;
+	} 
+	//这里这样写，是因为在通过计算结果进行构造过程中，有可能出现分子分母均为负的情况。
+	if (numerator < 0)
+	{
+		m_negative = !m_negative;
+	} 
+	if (denominator < 0)
+	{
+		m_negative = !m_negative;
+	} 
+	//计算整数、分子、分母。其中分母要参与下面的运算，所以不能是负的，用abs取绝对值，分子要保留原值
+	m_integer = numerator / denominator;m_numerator = numerator - m_integer * denominator;
+	m_denominator = abs(denominator);
+	//约分，注意传给子函数的分子必须是正的，分母上面处理过了
+	if (m_numerator)
+	{
+		_sint64 maxtmp = calcGCD(abs(m_numerator), m_denominator);
+		if (maxtmp)
+		{
+			m_numerator /= maxtmp;
+			m_denominator /= maxtmp;
+		}
+	} 
+	//计算约分后假分数版的分子，因为后续运算是不需要整数部分的，所以必须用假分数的分子算。
+	m_numeratorAll = m_numerator + m_integer * m_denominator;
 }
-} /
-/计算约分后假分数版的分子，因为后续运算是不需要整数部分的，所以必须用假分数的分子算。
-m_numeratorAll = m_numerator + m_integer * m_denominator;
-} /
-/以下为分数的加减乘除，统统使用m_numeratorAll（假分数的分子）进行运算。
+
+//以下为分数的加减乘除，统统使用m_numeratorAll（假分数的分子）进行运算。
 RationalNumber RationalNumber::operator+(RationalNumber const& o) const
 {
 _sint64 numerator = (m_numeratorAll * o.m_denominator) +
