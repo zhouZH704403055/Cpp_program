@@ -71,78 +71,84 @@ RationalNumber::RationalNumber(_sint64 numerator, _sint64 denominator)
 //以下为分数的加减乘除，统统使用m_numeratorAll（假分数的分子）进行运算。
 RationalNumber RationalNumber::operator+(RationalNumber const& o) const
 {
-_sint64 numerator = (m_numeratorAll * o.m_denominator) +
-(o.m_numeratorAll * m_denominator);
-_sint64 denominator = m_denominator * o.m_denominator;
-return RationalNumber(numerator, denominator);
-} R
-ationalNumber RationalNumber::operator-(RationalNumber const& o) const
-{
-_sint64 numerator = (m_numeratorAll * o.m_denominator) -
-(o.m_numeratorAll * m_denominator);
-_sint64 denominator = m_denominator * o.m_denominator;
-return RationalNumber(numerator, denominator);
-} R
-ationalNumber RationalNumber::operator*(RationalNumber const& o) const
-{
-_sint64 numerator = m_numeratorAll * o.m_numeratorAll;
-_sint64 denominator = m_denominator * o.m_denominator;
-return RationalNumber(numerator, denominator);
-} R
-ationalNumber RationalNumber::operator/(RationalNumber const& o) const
-{
-_sint64 numerator = m_numeratorAll * o.m_denominator;
-_sint64 denominator = m_denominator * o.m_numeratorAll;
-return RationalNumber(numerator, denominator);
-} s
-td::ostream &operator<<(std::ostream &os, RationalNumber const& o)
-{
-//分母为0的情况就不用继续了
-if (o.m_infinate){
-os << "Inf";
-return os;
-} /
-/整数和分子为0那干脆就是0了
-if (o.m_numerator == 0 && o.m_integer == 0)
-{
-os << "0";
-return os;
-} /
-/负数打印括号和负号
-if (o.m_negative)
-{
-os << "(-";
-} /
-/有整数就打整数
-if (o.m_integer)
-{
-os << abs(o.m_integer);
-if (o.m_numerator) //整数小数都有就打个空格隔开
-{
-os << " ";
+	_sint64 numerator = (m_numeratorAll * o.m_denominator) +
+	(o.m_numeratorAll * m_denominator);
+	_sint64 denominator = m_denominator * o.m_denominator;
+	return RationalNumber(numerator, denominator);
 }
-} /
-/有分数就打分数，分母已经abs过了，这里可以不用
-if (o.m_numerator)
+
+RationalNumber RationalNumber::operator-(RationalNumber const& o) const
 {
-os << abs(o.m_numerator) << '/' << o.m_denominator;
-} /
-/负数的后半边括号
-if (o.m_negative)
+	_sint64 numerator = (m_numeratorAll * o.m_denominator) -
+	(o.m_numeratorAll * m_denominator);
+	_sint64 denominator = m_denominator * o.m_denominator;
+	return RationalNumber(numerator, denominator);
+}
+
+RationalNumber RationalNumber::operator*(RationalNumber const& o) const
 {
-os << ")";
-} r
-eturn os;
-} i
-nt main()
+	_sint64 numerator = m_numeratorAll * o.m_numeratorAll;
+	_sint64 denominator = m_denominator * o.m_denominator;
+	return RationalNumber(numerator, denominator);
+}
+
+RationalNumber RationalNumber::operator/(RationalNumber const& o) const
 {
-_sint64 n1, d1, n2, d2;
-scanf("%lld/%lld %lld/%lld", &n1, &d1, &n2, &d2);
-RationalNumber rn1(n1, d1), rn2(n2, d2);
-//轻松+愉快的使用函数时间
-std::cout << rn1 << " + " << rn2 << " = " << rn1 + rn2 << '\n';
-std::cout << rn1 << " - " << rn2 << " = " << rn1 - rn2 << '\n';
-std::cout << rn1 << " * " << rn2 << " = " << rn1 * rn2 << '\n';
-std::cout << rn1 << " / " << rn2 << " = " << rn1 / rn2 << '\n';
-return 0;
+	_sint64 numerator = m_numeratorAll * o.m_denominator;
+	_sint64 denominator = m_denominator * o.m_numeratorAll;
+	return RationalNumber(numerator, denominator);
+}
+
+std::ostream &operator<<(std::ostream &os, RationalNumber const& o)
+{
+	//分母为0的情况就不用继续了
+	if (o.m_infinate)
+	{
+		os << "Inf";
+		return os;
+	} 
+	//整数和分子为0那干脆就是0了
+	if (o.m_numerator == 0 && o.m_integer == 0)
+	{
+		os << "0";
+		return os;
+	} 
+	//负数打印括号和负号
+	if (o.m_negative)
+	{
+		os << "(-";
+	}
+	//有整数就打整数
+	if (o.m_integer)
+	{
+		os << abs(o.m_integer);
+		if (o.m_numerator) //整数小数都有就打个空格隔开
+		{
+			os << " ";
+		}
+	} 
+	//有分数就打分数，分母已经abs过了，这里可以不用
+	if (o.m_numerator)
+	{
+		os << abs(o.m_numerator) << '/' << o.m_denominator;
+	} 
+	//负数的后半边括号
+	if (o.m_negative)
+	{
+		os << ")";
+	} 
+	return os;
+}
+
+int main()
+{
+	_sint64 n1, d1, n2, d2;
+	scanf("%lld/%lld %lld/%lld", &n1, &d1, &n2, &d2);
+	RationalNumber rn1(n1, d1), rn2(n2, d2);
+	//轻松+愉快的使用函数时间
+	std::cout << rn1 << " + " << rn2 << " = " << rn1 + rn2 << '\n';
+	std::cout << rn1 << " - " << rn2 << " = " << rn1 - rn2 << '\n';
+	std::cout << rn1 << " * " << rn2 << " = " << rn1 * rn2 << '\n';
+	std::cout << rn1 << " / " << rn2 << " = " << rn1 / rn2 << '\n';
+	return 0;
 }
