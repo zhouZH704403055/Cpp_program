@@ -1,4 +1,5 @@
-class Solution {
+class Solution 
+{
 public:
     void PrintMatrixInCircle(vector<vector<int>>& matrix,vector<int>& result,int row,int col,int start)
     {
@@ -33,7 +34,8 @@ public:
             }
         }
     }
-    vector<int> printMatrix(vector<vector<int> > matrix) {
+    vector<int> printMatrix(vector<vector<int> > matrix) 
+	{
         vector<int> result;
         if(matrix.empty())
         {
