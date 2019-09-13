@@ -1,6 +1,8 @@
-class Solution {
+class Solution 
+{
 public:
-    vector<vector<int> > FindContinuousSequence(int sum) {
+    vector<vector<int> > FindContinuousSequence(int sum) 
+	{
         vector<vector<int>> result;
         if(sum<3)
         {
