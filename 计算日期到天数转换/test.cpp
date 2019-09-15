@@ -14,14 +14,14 @@ int main()
 		sum = 0;
 		sum += array[month - 2];
 		sum += day;
-	if(month > 2)
-	{ 
-		if((year % 4 == 0 && year % 100 != 0)|| year % 400 == 0)
-		{
-			sum += 1;
+		if(month > 2)
+		{ 
+			if((year % 4 == 0 && year % 100 != 0)|| year % 400 == 0)
+			{
+				sum += 1;
+			} 
 		} 
+		cout << sum <<endl;
 	} 
-	
-	cout << sum <<endl;
-	} 
+	return 0;
 }
