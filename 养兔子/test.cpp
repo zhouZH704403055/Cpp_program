@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdio>
+
 int main()
 {
 	long long n[91] = { 1, 2 };
