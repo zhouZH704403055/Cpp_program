@@ -2,7 +2,8 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-int minDistance(string word1, string word2) {
+int minDistance(string word1, string word2) 
+{
 	// word与空串之间的编辑距离为word的长度
 	if (word1.empty() || word2.empty()) 
 	{
@@ -11,8 +12,9 @@ int minDistance(string word1, string word2) {
 	int len1 = word1.size();
 	int len2 = word2.size();
 	// F(i,j)初始化
-	vector<vector<int> > f(1 + len1, vector<int>(1 + len2, 0));for (int i = 0; i <= len1; ++i) {
-	f[i][0] = i;
+	vector<vector<int> > f(1 + len1, vector<int>(1 + len2, 0));for (int i = 0; i <= len1; ++i) 
+	{
+		f[i][0] = i;
 	} 
 	for (int i = 0; i <= len2; ++i) 
 	{
@@ -41,6 +43,7 @@ int minDistance(string word1, string word2) {
 	} 
 	return f[len1][len2];
 }
+
 int main()
 {
 	string a,b;
