@@ -7,7 +7,8 @@ struct TreeNode {
 			val(x), left(NULL), right(NULL) {
 	}
 };*/
-class Solution {
+class Solution 
+{
 public:
     TreeNode* Convert(TreeNode* pRootOfTree)
     {
