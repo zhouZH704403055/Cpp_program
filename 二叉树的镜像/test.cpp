@@ -7,9 +7,11 @@ struct TreeNode {
 			val(x), left(NULL), right(NULL) {
 	}
 };*/
+	
 class Solution {
 public:
-    void Mirror(TreeNode *pRoot) {
+    void Mirror(TreeNode *pRoot) 
+	{
         if(pRoot==nullptr)
         {
             return;
