@@ -12,7 +12,7 @@ int pathNum(int n,int m)
 		return n + m;
 	else
 	//格子为0时， 路径为0
-	return 0;
+		return 0;
 }
  
 int main()
