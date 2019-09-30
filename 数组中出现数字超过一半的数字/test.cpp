@@ -1,6 +1,8 @@
-class Solution {
+class Solution 
+{
 public:
-    int MoreThanHalfNum_Solution(vector<int> numbers) {
+    int MoreThanHalfNum_Solution(vector<int> numbers) 
+	{
         int flag=0;
         int num=numbers[0];
         for(auto e:numbers)
